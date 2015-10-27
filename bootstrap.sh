@@ -1,13 +1,12 @@
 sudo apt-get -y update
 # sudo apt-get -y dist-upgrade
 
-sudo adduser --system --home=/opt/odoo --group odoo
+sudo adduser --system --home=/opt/odoo --no-create-home --group odoo
 
 # postgresql
 sudo apt-get -y install postgresql
 
-CMDDB="createuser --createdb --username postgres --no-createrole --no-superuser --no-password odoo"
-sudo su postgres -c $CMDDB
+sudo su -c "createuser --username postgres --createdb --no-createrole --no-superuser --no-password odoo"  postgres
 
 # odoo dependensi
 sudo apt-get -y install python-dateutil python-feedparser python-gdata \
